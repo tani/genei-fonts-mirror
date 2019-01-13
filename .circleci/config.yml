@@ -1,0 +1,28 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.8
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+        name: Download fonts
+        commands: mkdir -p fonts && wget -nd -r -l1 -A.zip https://okoneya.jp/font/download.html && mv *.zip ./fonts/
+      - run:
+        name: Upload fonts
+        commands: go get github.com/tcnksm/ghr && ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} mirror ./fonts/
+workflows:
+  version: 2
+  commit-workflow:
+    jobs:
+      - build
+  scheduled-workflow:
+    triggers:
+      - schedule:
+          cron: "0 15 * * FRI"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - build
