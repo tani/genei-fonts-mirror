@@ -7,11 +7,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Download fonts
-        commands: mkdir -p fonts && wget -nd -r -l1 -A.zip https://okoneya.jp/font/download.html && mv *.zip ./fonts/
+          name: Download fonts
+          commands: mkdir -p fonts && wget -nd -r -l1 -A.zip https://okoneya.jp/font/download.html && mv *.zip ./fonts/
       - run:
-        name: Upload fonts
-        commands: go get github.com/tcnksm/ghr && ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} mirror ./fonts/
+          name: Upload fonts
+          commands: go get github.com/tcnksm/ghr && ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} mirror ./fonts/
 workflows:
   version: 2
   commit-workflow:
