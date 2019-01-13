@@ -10,7 +10,7 @@ jobs:
           name: Download fonts
           command: |
             mkdir -p fonts
-            wget -nd -r -l1 -A.zip https://okoneya.jp/font/download.html
+            wget -nd -r -l1 -A.zip https://okoneya.jp/font/download.html || :
             mv *.zip ./fonts/
       - run:
           name: Upload fonts
