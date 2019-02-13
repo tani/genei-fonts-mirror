@@ -1,4 +1,4 @@
-# Unofficial Mirror for GenEi Font Families
+# Unofficial Mirror for GenEi Font Families [![CircleCI](https://circleci.com/gh/ta2gch/genei-fonts-mirror.svg?style=svg)](https://circleci.com/gh/ta2gch/genei-fonts-mirror)
 GenEi fonts is Japanese font families derivated from Source Han Serif and Source Han Sans.
 
 This repository contains the following families:
